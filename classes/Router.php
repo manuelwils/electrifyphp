@@ -20,7 +20,7 @@ class Router {
 		$request_uri = get_uri();
 
 		// check if the request uri match the route we provided
-		if($request_uri === '/eka' . $route) {
+		if($request_uri === SERVER_ROOT . $route) {
 			try {
 				$callback();
 			} catch(Exception $e) {
@@ -45,7 +45,7 @@ class Router {
 			$request_uri = get_uri();
 
 			// check if the request uri match the route we provided
-			if($request_uri === '/eka' . $route) {
+			if($request_uri === SERVER_ROOT . $route) {
 				try {
 					$callback();
 				} catch(Exception $e) {

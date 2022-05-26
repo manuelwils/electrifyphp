@@ -8,7 +8,7 @@
 	$env->type = "Development";
 
 	// set server
-	$env->server = "http://localhost/eka";
+	$env->server_root = "/eka";
 
 	// set database host
 	$env->dbhost = "localhost";

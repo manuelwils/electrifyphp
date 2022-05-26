@@ -8,7 +8,7 @@ require_once getcwd() . '/lib/Autoload.php';
 
 require_once getcwd() . '/lib/helpers.php';
 
-DEFINE('SERVER', $env->server);
+DEFINE('SERVER_ROOT', $env->server_root);
 
 // set constance for directories
 DEFINE('ROOT', getcwd());
