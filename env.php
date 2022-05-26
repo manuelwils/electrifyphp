@@ -4,7 +4,7 @@
 
 	$env = new stdClass();
 
-	// check development environment (can be 'Developement' or 'Production' if deployed)
+	// check runtime environment (can be 'Developement' or 'Production' if deployed)
 	$env->type = "Development";
 
 	// set server
