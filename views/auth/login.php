@@ -109,7 +109,7 @@
                     let response = JSON.parse(xhr.response);
 
                     if(response && response.message && response.message !== 'success')
-                        console.log(response.message);
+                        alert(response.message);
                     else
                         document.location = './';
 

@@ -9,7 +9,7 @@ function autoload($class_name) {
 	$controllers = getcwd() . "/controllers/{$class_name}.php";
 	$models = getcwd() . "/models/{$class_name}.php";
 	$config = getcwd() . "/config/{$class_name}.php";
-	$eloquent = getcwd() . "/eloquent/{$class_name}.php";
+	$eloquent = getcwd() . "/core/eloquent/{$class_name}.php";
 
 	// check if the class exist and return that class
 	// otherwise return an error statement
