@@ -1,0 +1,11 @@
+<?php
+
+class HomeController {
+
+	public static function index() {
+
+		view("index.php");
+
+	}
+
+}
