@@ -104,7 +104,7 @@
 			let password_strength = "";
 
 			//loop through inputs and check for any empty field
-			[].forEach.call(inputs, function(e) {
+			/*[].forEach.call(inputs, function(e) {
 
 				//console.log(e.getAttribute('type') == 'text' ? e : '')
 
@@ -115,7 +115,7 @@
 					errors.push(`${e.getAttribute('name')} cannot be empty`)
 
 				}
-			});
+			});*/
 
 			let regEx = /^(?=.*?[a-z])(?=.*?[A-Z])(?=.*?[0-9])(?=.*?[~!@#$%^&\*\(\)\_\-\+\=\{\}\|\:\;\"\'\?\>\<\.\,]).{8,}$/
 
@@ -154,28 +154,25 @@
 
 			xhr.open('POST', url, true);
 
-			//Send the proper header information along with the request
-
-			// this piece of shit i commented out below gave me a tough time [fuck it]
-			// xhr.setRequestHeader('Content-type', 'application/x-www-form-urlencoded');
-
 			xhr.onreadystatechange = function() {
 
 				// call a function when the state changes.
 
 			    if(xhr.readyState == 4 && xhr.status == 200) {
 
-			        if(xhr.responseText === "")
+			        if(xhr.response === "") {
 			        	document.location = "./login";
-			        else
-			        	console.log(xhr.responseText)
+						//console.log("saved")
+					}
+			        else {
+			        	alert(xhr.response)
+					}
 
 			    }
 			    
 			}
 
 			xhr.send(form_data);
-
 
 		}
 

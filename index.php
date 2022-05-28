@@ -1,6 +1,13 @@
 <?php
 
+require_once __DIR__ . '/vendor/autoload.php';
 require_once __DIR__ . '/config/init.php';
+
+use App\Core\Router;
+use App\Http\Controllers\HomeController;
+use App\Http\Controllers\LoginController;
+use App\Http\Controllers\LogoutController;
+use App\Http\Controllers\RegisterController;
 
 // homepage
 Router::get('/', function() {
@@ -29,5 +36,5 @@ Router::post('/auth', function() {
 
 // logout
 Router::post('/logout', function() {
-	LogoutController::kill();
+	LogoutController::destroy();
 });

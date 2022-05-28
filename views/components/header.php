@@ -26,7 +26,7 @@
 					<div id="navbar" class="" style="margin-bottom: -20px">
 						<ul>
 							<li><a class="navbar-brand" href="./">HOME</a></li>
-							<?php if(Auth::is_guest()) { ?>
+							<?php if(is_guest()) { ?>
 								<li><a href="./login" class="btn btn-primary text-white" style="margin-top: -10px">Login</a></li>
 							<?php } else {  ?>
 							<!-- 	<li><a href="admin.php">Admin</a></li>  -->

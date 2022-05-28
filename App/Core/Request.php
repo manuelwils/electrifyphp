@@ -1,17 +1,30 @@
 <?php 
 
-/**
- * Request class
-*/
+namespace App\Core;
 
+/**
+ * class Request
+*/
 class Request 
 {
-
+	/**
+	 * request keys
+	 */
 	public array $keys = [];
+
+	/**
+	 * request key value pair
+	 */
 	public array $data = [];
+
+	/**
+	 * errors
+	 */
 	protected array $errors = [];
 
-	// third party class (Composition patten)
+	/**
+	 * Exceptions $exception
+	 */
 	public Exceptions $exception;
 
 	public function __construct() {
@@ -22,22 +35,41 @@ class Request
 		}
 	}
 
+	/**
+	 * get request data
+	 * @param string $data
+	 */
 	public function __get($data) {
 		return $this->data[':'.$data];
 	}
 
+	/**
+	 * set request data
+	 * @param string $data
+	 * @param string $value
+	 */
 	public function __set($data, $value) {
 		$this->data[':'.$data] = $value;
 	}
 
+	/**
+	 * validate request object
+	 * @param array $fields
+	 */
 	public function validate($fields = [] ) {
 
+		/**
+		 * bring Validator object to validate request
+		 */
 		$validator  = new Validator;
 
 		foreach ($fields as $key => $value) {
 
 			if (in_array($key, $this->keys)) {
 
+				/**
+				 * check if $value is an array and loop through $value conditions
+				 */
 				if (is_array($value)) {
 
 					foreach ($value as $condition) {
@@ -60,6 +92,10 @@ class Request
 					}
 
 				} else {
+
+					/**
+					 * $value is not an array so go through $value conditions
+					 */
 
 					switch($value) {
 
@@ -92,11 +128,15 @@ class Request
 			$this->exception->log($error);
 		}
 		
-		exit(var_dump($this->errors));
+		exit(json_encode(array("message" => $this->errors)));
 
 	}
 
 	public function organize() {
+		/**
+		 * remove first element of the request object [the first element is "path", not needed here]
+		 * then return request object
+		 */
 		array_shift($this->data);
 		return $this->data;
 	}

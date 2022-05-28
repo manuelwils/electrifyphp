@@ -8,7 +8,8 @@
 	$env->type = "Development";
 
 	// set server
-	$env->server_root = "/eka";
+	// also change the last line of the .htaccess(line 4) file to point to your server root if not "/L"
+	$env->server_root = "/L";
 
 	// set database host
 	$env->dbhost = "localhost";

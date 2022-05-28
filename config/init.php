@@ -4,7 +4,7 @@
 
 require_once getcwd() . '/env.php';
 
-require_once getcwd() . '/lib/Autoload.php';
+//require_once getcwd() . '/lib/Autoload.php';
 
 require_once getcwd() . '/lib/helpers.php';
 

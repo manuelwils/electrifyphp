@@ -1,0 +1,24 @@
+{
+    "name": "lenovo/l",
+    "description": "Simple PHP project boilerplate",
+    "type": "library",
+    "license": "MIT",
+    "autoload": {
+        "classmap": [
+            "App/Core",
+            "App/Core/Eloquent",
+            "App/Core",
+            "App/Http/Controllers",
+            "App/Http/Middleware",
+            "App/Models"
+        ]
+    },
+    "authors": [
+        {
+            "name": "Manuelwils",
+            "email": "manuelgwilz@gmail.com"
+        }
+    ],
+    "minimum-stability": "dev",
+    "require": {}
+}
