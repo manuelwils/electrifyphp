@@ -47,22 +47,9 @@ function redirect($path) {
 	return header('Location: ' . $path);
 }
 
-
-// check not empty value in array
-function not_empty($array = array()) {
-
-	foreach($array as $key => $value) {
-
-		if(empty($array[$key])) {
-
-			echo $array[$key] . " cannot be empty";
-
-			return false;
-
-		}
-
-		return true;
-	}
+// sanitize user inputs
+function sanitize($str) {
+	return htmlspecialchars($str);
 }
 
 // load file

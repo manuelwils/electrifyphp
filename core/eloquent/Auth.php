@@ -32,7 +32,7 @@ class Auth {
 		} catch(Exception $e) {
 			return false;
 		}
-		if(count($email) != 0 && SecureData::verify($fields[$self->requirements[1]], $old_password)) {
+		if(count($email) != 0 && Hash::verify($fields[$self->requirements[1]], $old_password)) {
 			return true;
 		}
 		

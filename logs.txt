@@ -1,0 +1,29 @@
+[28-05-2022 00:53:13] password is required 
+[28-05-2022 00:54:09] email is required 
+[28-05-2022 00:54:09] email must be a valid email 
+[28-05-2022 00:54:09] password is required 
+[28-05-2022 01:06:52] email is required 
+[28-05-2022 01:06:52] email must be a valid email 
+[28-05-2022 01:06:52] password is required 
+[28-05-2022 01:08:49] password is required 
+[28-05-2022 01:10:18] password is required 
+[28-05-2022 01:14:08] password is required 
+[28-05-2022 01:15:09] password is required 
+[28-05-2022 01:18:08] password is required 
+[28-05-2022 01:18:16] password is required 
+[28-05-2022 01:18:37] email must be a valid email 
+[28-05-2022 01:20:59] password is required 
+[28-05-2022 01:21:13] email must be a valid email 
+[28-05-2022 01:21:25] email must be a valid email 
+[28-05-2022 01:26:26] password is required 
+[28-05-2022 01:26:56] password is required 
+[28-05-2022 01:29:15] password is required 
+[28-05-2022 01:29:30] email is required 
+[28-05-2022 01:29:30] email must be a valid email 
+[28-05-2022 01:29:30] password is required 
+[28-05-2022 03:01:28] password is required 
+[28-05-2022 03:13:32] captcha is required 
+[28-05-2022 03:13:58] firstname is required 
+[28-05-2022 03:13:58] captcha is required 
+[28-05-2022 03:15:25] firstname is required 
+[28-05-2022 03:15:25] captcha is required 

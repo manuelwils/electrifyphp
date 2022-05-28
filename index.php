@@ -1,6 +1,6 @@
 <?php
 
-require_once __DIR__ . '/config/config.php';
+require_once __DIR__ . '/config/init.php';
 
 // homepage
 Router::get('/', function() {

@@ -20,10 +20,9 @@ class LoginController
 			exit();
 		}
 
-		$fields = array(
-			':email' => SecureData::escape_string($_POST['email']),
-			':password' => SecureData::escape_string($_POST['password']),
-		);
+		$request = new Request;
+
+		$fields = $request->organize();
 
 		if(Login::attempt($fields)) {
 			set_session('user_id', $fields[':email']);
