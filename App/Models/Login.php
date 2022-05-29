@@ -2,7 +2,7 @@
 
 namespace App\Models;
 
-use App\Core\Eloquent\Auth;
+use App\Core\Eloquent\Authentication as Auth;
 
 class Login extends Auth
 {

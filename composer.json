@@ -1,8 +1,14 @@
 {
-    "name": "lenovo/l",
+    "name": "mockr/mockr",
     "description": "Simple PHP project boilerplate",
     "type": "library",
     "license": "MIT",
+    "authors": [
+        {
+            "name": "Manuelwils",
+            "email": "manuelgwilz@gmail.com"
+        }
+    ],
     "autoload": {
         "classmap": [
             "App/Core",
@@ -13,12 +19,6 @@
             "App/Models"
         ]
     },
-    "authors": [
-        {
-            "name": "Manuelwils",
-            "email": "manuelgwilz@gmail.com"
-        }
-    ],
     "minimum-stability": "dev",
     "require": {}
 }

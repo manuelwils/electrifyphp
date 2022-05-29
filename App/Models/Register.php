@@ -2,9 +2,9 @@
 
 namespace App\Models;
 
-use App\Core\Eloquent\Eloquent;
+use App\Core\Eloquent\Model;
 
-class Register extends Eloquent
+class Register extends Model
 {
 	/**
 	 * database table 
@@ -21,6 +21,6 @@ class Register extends Eloquent
 	 */
 	public function __construct()
 	{
-		new Eloquent($this->table, $this->fillable);
+		new Model($this->table, $this->fillable);
 	}
 }

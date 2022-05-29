@@ -5,7 +5,7 @@ namespace App\Core;
 use Exception;
 
 /**
- * class Writer
+ * @package Writer
  */
 
 class Writer

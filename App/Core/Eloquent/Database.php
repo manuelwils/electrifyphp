@@ -5,13 +5,14 @@ namespace App\Core\Eloquent;
 use PDO;
 
 /**
- * class DB
- * Database class
+ * @package Database
  */
-class DB
+class Database
 {
 
-    // a database instance (singleton design pattern)
+    /**
+     * a database instance (singleton design pattern)
+     */
     protected static $db_instance = null;
 
     /**

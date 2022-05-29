@@ -2,10 +2,12 @@
 
 namespace App\Core\Eloquent;
 
+use App\Core\Eloquent\Database as DB;
+
 /**
- * class Eloquent
+ * class Model
  */
-class Eloquent
+class Model
 {
 	/**
 	 * database table 

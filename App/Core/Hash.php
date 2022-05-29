@@ -3,8 +3,7 @@
 namespace App\Core;
 
 /**
- * class Hash
- * for encryptions
+ * @package Hash
  */
 class Hash
 {

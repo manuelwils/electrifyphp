@@ -1,5 +1,5 @@
 <?php 
-	load_file('views/components/header.php');
+	load_file('resource/views/components/header.php');
 ?>
 	<div class="row">
 		<div class="col-md-12">
@@ -104,7 +104,7 @@
 			let password_strength = "";
 
 			//loop through inputs and check for any empty field
-			/*[].forEach.call(inputs, function(e) {
+			[].forEach.call(inputs, function(e) {
 
 				//console.log(e.getAttribute('type') == 'text' ? e : '')
 
@@ -115,7 +115,7 @@
 					errors.push(`${e.getAttribute('name')} cannot be empty`)
 
 				}
-			});*/
+			});
 
 			let regEx = /^(?=.*?[a-z])(?=.*?[A-Z])(?=.*?[0-9])(?=.*?[~!@#$%^&\*\(\)\_\-\+\=\{\}\|\:\;\"\'\?\>\<\.\,]).{8,}$/
 
@@ -144,7 +144,7 @@
 				}
 				return;
 			}
-				
+			
 			let form_data = new FormData(register_form)
 
 			// make ajax request to submit form
@@ -184,5 +184,5 @@
 </script>
 
 <?php 
-	load_file('views/components/header.php');
+	load_file('resource/views/components/header.php');
 ?>

@@ -1,15 +1,16 @@
 <?php
 
-use App\Core\Eloquent\Auth;
-
-//change 1 to 0 on production
-ini_set('display_errors', 1);
+use App\Core\Eloquent\Authentication as Auth;
 
 /**
- *helper functions for reusable code
+ * change '1' and 'E_ALL' to '0' on production
  */
+ini_set('display_errors', 1);
+error_reporting(E_ALL);
 
-// start php session
+/**
+ * start php session
+ */
 function start_session()
 {
 	if (session_status() == PHP_SESSION_NONE) {
@@ -18,29 +19,34 @@ function start_session()
 }
 start_session();
 
-// query view directory
+/**
+ * query view directory
+ * @param string $path
+ */
 function view($path)
 {
+	/**
+	 * views path
+	 */
+	$views_path = getcwd() . '/resource/views/';
 
-	//views path
-	$views_path = getcwd() . '/views/';
-
+	/**
+	 * path navigated
+	 */
 	$requested_path = $views_path . $path;
 
-	//check if query path exist in views directory
-	try {
-		if (file_exists($requested_path)) {
+	/**
+	 * check if query path exist in views directory
+	 */
+	if (file_exists($requested_path)) {
 
-			//return the path
-			require_once $requested_path;
+		/**
+		 * return the path
+		 */
+		require_once $requested_path;
 
-			// end script execution
-			return;
-		}
-	} catch (Exception $e) {
-
-		// catch and return any exception
-		return $e->getMessage();
+		/* end script execution */
+		return;
 	}
 }
 
@@ -51,63 +57,83 @@ function auth()
 {
 	return new Auth();
 }
+
+/**
+ * Auth session exist
+ */
 function is_auth()
 {
 	return auth()->is_auth();
 }
+
+/**
+ * User is a guest
+ */
 function is_guest()
 {
 	return auth()->is_guest();
 }
 
-// return encoded data
+/**
+ * return encoded data
+ * @param string $name
+ * @param string $value
+ */
 function encode($name, $value)
 {
 	return json_encode(array($name => $value));
 }
 
-// redirects
+/**
+ * redirects
+ * @param string $path
+ */
 function redirect($path)
 {
 	return header('Location: ' . $path);
 }
 
-// sanitize user inputs
+/**
+ * sanitize data
+ * @param string $str
+ */
 function sanitize($str)
 {
 	return htmlspecialchars($str);
 }
 
-// load file
-function load_file($file, $arg = false): void
+/**
+ * load file
+ * @param string $file
+ */
+function load_file($file): void
 {
-
-	//if $arg is set to true, then query without the root directory
-	if ($arg && $arg == false)
-		require_once __DIR__ . '/' . $file;
-	else
-		// query the file from the base directory
-		require_once getcwd() . '/' . $file;
+	/**
+	 * query the file from the base directory
+	 */
+	require_once getcwd() . '/' . $file;
 }
 
-// query assets directory
+/**
+ * query assets directory
+ * @param string $asset
+ */
 function assets($asset)
 {
 	return "public/assets/{$asset}";
 }
 
-// get request uri
+/**
+ * get request uri
+ */
 function get_uri()
 {
 	return $_SERVER['REQUEST_URI'];
 }
 
-
 /**
- * get request methods
+ * is get request method
  */
-
-// get request
 function is_get_request()
 {
 	return ($_SERVER['REQUEST_METHOD'] == 'GET'
@@ -116,7 +142,9 @@ function is_get_request()
 	);
 }
 
-// get request
+/**
+ * is post request method
+ */
 function is_post_request()
 {
 	return ($_SERVER['REQUEST_METHOD'] == 'POST'
@@ -126,16 +154,19 @@ function is_post_request()
 }
 
 /**
- * working with sessions
+ * set sessions
+ * @param string $session
+ * @param string $value
  */
-
-// set session 
 function set_session($session, $value)
 {
 	return $_SESSION[$session] = $value;
 }
 
-// get session
+/**
+ * get sessions
+ * @param string $session
+ */
 function get_session($session)
 {
 	if (isset($_SESSION[$session])) {
@@ -145,13 +176,18 @@ function get_session($session)
 	}
 }
 
-// cancel further screipt execution
+/**
+ * cancel further script execution
+ * @param string $msg
+ */
 function cancel($msg)
 {
 	throw new Exception($msg);
 }
 
-// generate random_integer
+/**
+ * generate random_integer
+ */
 function rand_session_integers()
 {
 	$random = rand(1, 9) . rand(1, 9) . rand(1, 9);

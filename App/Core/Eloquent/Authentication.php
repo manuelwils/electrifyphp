@@ -6,10 +6,12 @@ use App\Core\Exceptions;
 use Exception;
 use App\Core\Hash;
 
+use App\Core\Eloquent\Database as DB;
+
 /**
- * class Auth
+ * @package Authentication
  */
-class Auth
+class Authentication
 {
 	/**
 	 * database table 
@@ -104,5 +106,19 @@ class Auth
 	public function user($data)
 	{
 		return (DB::query("SELECT $data FROM member WHERE email=:email", array(':email' => get_session('user_id')))[0][$data]);
+	}
+
+	/**
+	 * logout authenticated session
+	 */
+	public static function destroy()
+	{
+
+		if (get_session('user_id')) {
+
+			unset($_SESSION['user_id']);
+
+			redirect('./login');
+		}
 	}
 }

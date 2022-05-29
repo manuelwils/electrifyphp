@@ -5,7 +5,7 @@ namespace App\Core;
 use Exception;
 
 /**
- * class Router
+ * @package Router
  */
 class Router
 {

@@ -1,5 +1,5 @@
 <?php 
-	load_file('views/components/header.php');
+	load_file('resource/views/components/header.php');
 ?>
 <div class="container">
     <!-- display message -->
@@ -130,5 +130,5 @@
 </script>
 
 <?php 
-	load_file('views/components/footer.php');
+	load_file('resource/views/components/footer.php');
 ?>

@@ -3,7 +3,7 @@
 namespace App\Core;
 
 /**
- * class Validator
+ * @package Validator
  */
 class Validator
 {

@@ -3,7 +3,7 @@
 namespace App\Core;
 
 /**
- * class Exceptions
+ * @package Exceptions
  */
 class Exceptions
 {
