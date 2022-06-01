@@ -6,32 +6,44 @@ use App\Http\Controllers\HomeController;
 use App\Http\Controllers\LoginController;
 use App\Http\Controllers\RegisterController;
 
+/**
+ * Instantiate Router
+ */
+$router = new Router;
+
+
 // homepage
-Router::get('/', function() {
+$router->get('/', function() {
 	HomeController::index();
 });
 
 // show register page
-Router::get('/register', function() {
+$router->get('/register', function() {
 	RegisterController::index();
 });
 
 // store registration data
-Router::post('/store', function() {
+$router->post('/store', function() {
 	RegisterController::store();
 });
 
 // show login form
-Router::get('/login', function() {
+$router->get('/login', function() {
 	LoginController::index();
 });
 
 // log in user
-Router::post('/auth', function() {
+$router->post('/auth', function() {
 	LoginController::auth();
 });
 
 // logout
-Router::post('/logout', function() {
+$router->post('/logout', function() {
 	Auth::destroy();
 });
+
+
+/**
+ * Start routing
+ */
+$router->run();

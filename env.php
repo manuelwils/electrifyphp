@@ -8,7 +8,7 @@
 
 	// set server
 	// also change the last line of the .htaccess(line 4) file to point to your server root if not "/mockr"
-	$env->server_root = "/mockr";
+	$env->server_root = "./";
 
 	// set database host
 	$env->dbhost = "localhost";

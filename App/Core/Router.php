@@ -2,36 +2,29 @@
 
 namespace App\Core;
 
-use Exception;
-
 /**
  * @package Router
  */
 class Router
 {
+	/**
+	 * routes
+	 */
+	protected array $routes = [];
 
 	/**
-	 * get route
-	 * @param string $route
-	 * @param callback $callback
+	 * use Exceptions
 	 */
-	public static function get($route, $callback)
+	protected Exceptions $exception;
+
+	/**
+	 * Request Module
+	 */
+	protected Request $request;
+
+	public function __construct()
 	{
-
-		// must be a get request
-		//is_get_request();
-
-		// get the current request uri/route
-		$request_uri = get_uri();
-
-		// check if the request uri match the route we provided
-		if ($request_uri === SERVER_ROOT . $route) {
-			try {
-				$callback();
-			} catch (Exception $e) {
-				return $e->getMessage();
-			}
-		}
+		$this->request = new Request;
 	}
 
 	/**
@@ -39,23 +32,46 @@ class Router
 	 * @param string $route
 	 * @param callback $callback
 	 */
-	public static function post($route, $callback)
+	public function get($route, $callback)
+	{
+		$this->routes['get'][$route] = $callback;
+	}
+
+	/**
+	 * get route
+	 * @param string $route
+	 * @param callback $callback
+	 */
+	public function post($route, $callback)
 	{
 
-		// must be a post request
-		if (is_post_request()) {
+		$this->routes['post'][$route] = $callback;
+	}
 
-			// get the current request uri/route
-			$request_uri = get_uri();
+	/**
+	 * resolve routes
+	 */
+	public function resolve()
+	{
+		$path = $this->request->getPath();
+		$method = $this->request->getMethod();
+		$callback = $this->routes[$method][$path];
+		
+		/*if(!in_array($path, $this->routes['get']) || !in_array($path, $this->routes['post'])) {
+			$this->exception->log("the requested route '{$path}' does not exist");
+			exit("404 Not Found!");
+		}*/
 
-			// check if the request uri match the route we provided
-			if ($request_uri === SERVER_ROOT . $route) {
-				try {
-					$callback();
-				} catch (Exception $e) {
-					return $e->getMessage();
-				}
-			}
-		}
+		if (is_callable($callback))
+			return call_user_func($callback);
+		return $callback;
+	}
+
+	/**
+	 * Start routing
+	 */
+	public function run()
+	{
+		return $this->resolve();
 	}
 }

@@ -1,7 +1,6 @@
 {
     "name": "mockr/mockr",
     "description": "Simple PHP project boilerplate",
-    "type": "library",
     "license": "MIT",
     "authors": [
         {
@@ -9,6 +8,7 @@
             "email": "manuelgwilz@gmail.com"
         }
     ],
+    "minimum-stability": "dev",
     "autoload": {
         "classmap": [
             "App/Core",
@@ -19,6 +19,5 @@
             "App/Models"
         ]
     },
-    "minimum-stability": "dev",
     "require": {}
 }

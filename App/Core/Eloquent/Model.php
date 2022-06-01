@@ -5,7 +5,7 @@ namespace App\Core\Eloquent;
 use App\Core\Eloquent\Database as DB;
 
 /**
- * class Model
+ * @package Model
  */
 class Model
 {
