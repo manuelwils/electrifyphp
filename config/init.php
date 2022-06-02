@@ -4,7 +4,7 @@
  * load dependency files
  */
 require_once getcwd() . '/env.php';
-require_once getcwd() . '/lib/helpers.php';
+require_once getcwd() . '/App/Lib/Helpers.php';
 
 /**
  * set constance for directories

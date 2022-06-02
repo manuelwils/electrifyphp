@@ -1,7 +1,5 @@
 <?php
 
-use App\Core\Eloquent\Authentication as Auth;
-
 /**
  * change '1' and 'E_ALL' to '0' on production
  */
@@ -55,7 +53,7 @@ function view($path)
  */
 function auth()
 {
-	return new Auth();
+	return new App\Core\Eloquent\Authentication;
 }
 
 /**

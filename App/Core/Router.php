@@ -25,10 +25,11 @@ class Router
 	public function __construct()
 	{
 		$this->request = new Request;
+		$this->exception = new Exceptions;
 	}
 
 	/**
-	 * get route
+	 * set get route
 	 * @param string $route
 	 * @param callback $callback
 	 */
@@ -38,7 +39,7 @@ class Router
 	}
 
 	/**
-	 * get route
+	 * set post route
 	 * @param string $route
 	 * @param callback $callback
 	 */
@@ -55,12 +56,13 @@ class Router
 	{
 		$path = $this->request->getPath();
 		$method = $this->request->getMethod();
-		$callback = $this->routes[$method][$path];
+		$callback = $this->routes[$method][$path] ?? false;
 		
-		/*if(!in_array($path, $this->routes['get']) || !in_array($path, $this->routes['post'])) {
+		if($callback == false) {
 			$this->exception->log("the requested route '{$path}' does not exist");
-			exit("404 Not Found!");
-		}*/
+			echo "404 Not Found!";
+			return;
+		}
 
 		if (is_callable($callback))
 			return call_user_func($callback);

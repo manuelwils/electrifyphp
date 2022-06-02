@@ -28,7 +28,7 @@ class LoginController
 		$request = new Request;
 
 		$fields = $request->organize();
-		//die(var_dump($fields));
+		
 		if (Login::attempt($fields)) {
 			set_session('user_id', $fields[':email']);
 			echo json_encode(array('message' => 'success'));

@@ -12,11 +12,10 @@
     "autoload": {
         "classmap": [
             "App/Core",
+            "App/Models",
             "App/Core/Eloquent",
-            "App/Core",
-            "App/Http/Controllers",
             "App/Http/Middleware",
-            "App/Models"
+            "App/Http/Controllers"
         ]
     },
     "require": {}
