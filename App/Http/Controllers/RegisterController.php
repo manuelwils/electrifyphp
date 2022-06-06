@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Exception;
 use App\Core\Hash;
+use App\Core\View;
 use App\Core\Request;
 use App\Core\Exceptions;
 use App\Models\Register;
@@ -13,12 +14,10 @@ class RegisterController
 
 	public static function index()
 	{
-
 		//only guest can view register page
 		if (is_auth())
 			redirect('./');
-
-		view("auth/register.php");
+		View::render("auth/register");
 	}
 
 	public static function store(Request $request)

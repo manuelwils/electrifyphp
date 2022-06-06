@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Core\View;
 use App\Core\Request;
 use App\Models\Login;
 
@@ -10,12 +11,10 @@ class LoginController
 
 	public static function index()
 	{
-
 		//only guest can view register page
 		if (is_auth())
 			redirect('./');
-
-		view("auth/login.php");
+		View::render("auth/login");
 	}
 
 	public static function auth(Request $request)
