@@ -2,11 +2,13 @@
 
 namespace App\Http\Controllers;
 
+use App\Core\View;
+
 class HomeController
 {
 
 	public static function index()
 	{
-		view("index.php");
+		View::render("index", ["username"=>"martins"], "main");
 	}
 }

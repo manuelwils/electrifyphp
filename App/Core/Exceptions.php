@@ -24,6 +24,6 @@ class Exceptions
 	 */
 	public function log($exception)
 	{
-		$this->writer->to('logs.txt')->append($exception);
+		$this->writer->to('runtime/logs.txt')->append($exception);
 	}
 }

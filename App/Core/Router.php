@@ -2,6 +2,11 @@
 
 namespace App\Core;
 
+use App\Core\View;
+use App\Core\Request;
+use App\Core\Response;
+use App\Core\Exceptions;
+
 /**
  * @package Router
  */
@@ -22,9 +27,16 @@ class Router
 	 */
 	protected Request $request;
 
+	/**
+	 * Response Module
+	 */
+	protected Response $response;
+
 	public function __construct()
 	{
+		$this->view = new View;
 		$this->request = new Request;
+		$this->response = new Response;
 		$this->exception = new Exceptions;
 	}
 
@@ -57,16 +69,16 @@ class Router
 		$path = $this->request->getPath();
 		$method = $this->request->getMethod();
 		$callback = $this->routes[$method][$path] ?? false;
-		
-		if($callback == false) {
+
+		if ($callback == false) {
 			$this->exception->log("the requested route '{$path}' does not exist");
-			echo "404 Not Found!";
-			return;
+			$callback = "404 Not Found!";
 		}
 
-		if (is_callable($callback))
-			return call_user_func($callback);
-		return $callback;
+		if (is_callable($callback)) {
+			return call_user_func($callback, $this->request, $this->response);
+		}
+		echo $callback;
 	}
 
 	/**

@@ -21,14 +21,13 @@ class RegisterController
 		view("auth/register.php");
 	}
 
-	public static function store()
+	public static function store(Request $request)
 	{
 
 		///only guest can view register page
 		if (is_auth())
 			return;
-
-		$request = new Request;
+			
 		$register = new Register;
 		$exception = new Exceptions;
 

@@ -18,14 +18,12 @@ class LoginController
 		view("auth/login.php");
 	}
 
-	public static function auth()
+	public static function auth(Request $request)
 	{
 
 		//only guest can view register page
 		if (is_auth())
 			return;
-
-		$request = new Request;
 
 		$fields = $request->organize();
 		

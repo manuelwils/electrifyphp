@@ -10,7 +10,7 @@ class Request
 	/**
 	 * request keys
 	 */
-	public array $keys = [];
+	private array $keys = [];
 
 	/**
 	 * request key value pair
@@ -25,7 +25,7 @@ class Request
 	/**
 	 * Exceptions $exception
 	 */
-	public Exceptions $exception;
+	protected Exceptions $exception;
 
 	public function __construct()
 	{

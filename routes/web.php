@@ -13,35 +13,22 @@ $router = new Router;
 
 
 // homepage
-$router->get('/', function() {
-	HomeController::index();
-});
+$router->get('/', [HomeController::class, "index"]);
 
 // show register page
-$router->get('/register', function() {
-	RegisterController::index();
-});
+$router->get('/register', [RegisterController::class, "index"]);
 
 // store registration data
-$router->post('/store', function() {
-	RegisterController::store();
-});
+$router->post('/store', [RegisterController::class, "store"]);
 
 // show login form
-$router->get('/login', function() {
-	LoginController::index();
-});
+$router->get('/login', [LoginController::class, "index"]);
 
 // log in user
-$router->post('/auth', function() {
-	LoginController::auth();
-});
+$router->post('/auth', [LoginController::class, "auth"]);
 
 // logout
-$router->post('/logout', function() {
-	Auth::destroy();
-});
-
+$router->post('/logout', [Auth::class, "destroy"]);
 
 /**
  * Start routing
