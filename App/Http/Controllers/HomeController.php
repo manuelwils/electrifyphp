@@ -9,6 +9,6 @@ class HomeController
 
 	public static function index()
 	{
-		View::render("index", ["username"=>"martins"], "main");
+		View::render("index", ["title"=>"Homepage"]);
 	}
 }
