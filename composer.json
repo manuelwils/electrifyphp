@@ -10,7 +10,7 @@
     ],
     "autoload": {
         "psr-4": {
-            "Electrify\\": "Vendor/Framework/Mockr/",
+            "Electrify\\": "vendor/Framework/Mockr/",
             "Mockr\\": "App/"
         }
     },
