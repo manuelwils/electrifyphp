@@ -13,6 +13,7 @@
             "App/Core",
             "App/Models",
             "App/Core/Eloquent",
+            "App/Core/Interfaces",
             "App/Http/Middleware",
             "App/Http/Controllers"
         ]

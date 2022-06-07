@@ -6,29 +6,32 @@ use Exception;
 use App\Core\Hash;
 use App\Core\View;
 use App\Core\Request;
+use App\Core\Response;
 use App\Core\Exceptions;
 use App\Models\Register;
+use App\Core\Eloquent\Authentication as Auth;
+use App\Core\Session;
 
 class RegisterController
 {
 
-	public static function index()
+	public static function index($request, Response $response)
 	{
 		//only guest can view register page
-		if (is_auth())
-			redirect('./');
+		if (Auth::auth())
+			$response->redirect('./');
 		View::render("auth/register");
 	}
 
 	public static function store(Request $request)
 	{
-
-		///only guest can view register page
-		if (is_auth())
+		// only guest can view register page
+		if (Auth::auth())
 			return;
-			
+
 		$register = new Register;
 		$exception = new Exceptions;
+		$session = new Session;
 
 		$fields = $request->validate([
 			'first_name' => 'required',
@@ -40,21 +43,21 @@ class RegisterController
 			'confirm_password' => 'required'
 		]);
 
-		//check if email already exist
+		// check if email already exist
 		if ($register->exist('email', $request->email)) {
-			echo encode("message", "email already exist");
+			echo json_encode(["message" => "email already exist"]);
 			return;
 		}
 
 		// validate captcha
-		if ($request->captcha !== get_session('code')) {
-			echo encode("message", "captcha does not match");
+		if ($request->captcha !== $session->read('code')) {
+			echo json_encode(["message" => "captcha does not match"]);
 			return;
 		}
 
 		// confirm password
 		if ($request->password !== $request->confirm_password) {
-			echo encode("message", "password not match with password confirmation");
+			echo json_encode(["message" => "password not match with password confirmation"]);
 			return;
 		}
 
@@ -64,7 +67,7 @@ class RegisterController
 			$register->create($fields);
 		} catch (Exception $e) {
 			$exception->log($e->getMessage());
-			echo encode("message", $e->getMessage());
+			echo json_encode(["message" => $e->getMessage()]);
 		}
 	}
 }

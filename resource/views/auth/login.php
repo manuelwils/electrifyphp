@@ -111,7 +111,7 @@
                     if(response && response.message && response.message !== 'success')
                         alert(response.message);
                     else
-                        document.location = './';
+                        document.location = '/';
 
                 }
                 

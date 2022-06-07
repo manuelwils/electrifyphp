@@ -1,57 +1,9 @@
 <?php
 
 /**
- * change '1' and 'E_ALL' to '0' on production
+ * get authentication
  */
-ini_set('display_errors', 1);
-error_reporting(E_ALL);
-
-/**
- * start php session
- */
-function start_session()
-{
-	if (session_status() == PHP_SESSION_NONE) {
-		session_start();
-	}
-}
-start_session();
-
-/**
- * query view directory
- * @param string $path
- */
-function view($path)
-{
-	/**
-	 * views path
-	 */
-	$views_path = getcwd() . '/resource/views/';
-
-	/**
-	 * path navigated
-	 */
-	$requested_path = $views_path . $path;
-
-	/**
-	 * check if query path exist in views directory
-	 */
-	if (file_exists($requested_path)) {
-
-		/**
-		 * return the path
-		 */
-		require_once $requested_path;
-
-		/* end script execution */
-		return;
-	}
-}
-
-/**
- * expose authentication
- */
-function auth()
+function auth(): App\Core\Eloquent\Authentication
 {
 	return new App\Core\Eloquent\Authentication;
 }
@@ -59,7 +11,7 @@ function auth()
 /**
  * Auth session exist
  */
-function is_auth()
+function is_auth(): bool
 {
 	return auth()->is_auth();
 }
@@ -67,37 +19,9 @@ function is_auth()
 /**
  * User is a guest
  */
-function is_guest()
+function is_guest(): bool
 {
 	return auth()->is_guest();
-}
-
-/**
- * return encoded data
- * @param string $name
- * @param string $value
- */
-function encode($name, $value)
-{
-	return json_encode(array($name => $value));
-}
-
-/**
- * redirects
- * @param string $path
- */
-function redirect($path)
-{
-	return header('Location: ' . $path);
-}
-
-/**
- * sanitize data
- * @param string $str
- */
-function sanitize($str)
-{
-	return htmlspecialchars($str);
 }
 
 /**
@@ -116,79 +40,17 @@ function load_file($file): void
  * query assets directory
  * @param string $asset
  */
-function assets($asset)
+function assets($asset): string
 {
 	return "public/assets/{$asset}";
 }
 
 /**
- * get request uri
- */
-function get_uri()
-{
-	return $_SERVER['REQUEST_URI'];
-}
-
-/**
- * is get request method
- */
-function is_get_request()
-{
-	return ($_SERVER['REQUEST_METHOD'] == 'GET'
-		? true
-		: false
-	);
-}
-
-/**
- * is post request method
- */
-function is_post_request()
-{
-	return ($_SERVER['REQUEST_METHOD'] == 'POST'
-		? true
-		: false
-	);
-}
-
-/**
- * set sessions
- * @param string $session
- * @param string $value
- */
-function set_session($session, $value)
-{
-	return $_SESSION[$session] = $value;
-}
-
-/**
- * get sessions
- * @param string $session
- */
-function get_session($session)
-{
-	if (isset($_SESSION[$session])) {
-		return $_SESSION[$session];
-	} else {
-		return false;
-	}
-}
-
-/**
- * cancel further script execution
- * @param string $msg
- */
-function cancel($msg)
-{
-	throw new Exception($msg);
-}
-
-/**
  * generate random_integer
  */
-function rand_session_integers()
+function rand_session_integers(): void
 {
 	$random = rand(1, 9) . rand(1, 9) . rand(1, 9);
-	set_session('code', $random);
+	$_SESSION['code'] = $random;
 	echo $random;
 }

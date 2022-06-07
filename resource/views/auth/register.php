@@ -161,8 +161,7 @@
 			    if(xhr.readyState == 4 && xhr.status == 200) {
 
 			        if(xhr.response === "") {
-			        	document.location = "./login";
-						//console.log("saved")
+			        	document.location = "/login";
 					}
 			        else {
 			        	alert(xhr.response)

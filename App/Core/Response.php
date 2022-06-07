@@ -5,8 +5,7 @@ namespace App\Core;
 /*
 |---------------------------------------------------------------------|
 | Its importtant to note that i just started working on this class    |
-| at the moment, it's not used anywhere in the application            |
-| the class is incomplete for any form of usage, avoid!               |
+| at the moment, it is used in a few places in the application        |
 |---------------------------------------------------------------------|
 */
 
@@ -166,6 +165,23 @@ class Response
     }
 
     /**
+     * @param string $key
+     * @param string $value
+     */
+    public function encode($key, $value)
+    {
+        return json_encode([$key => $value]);
+    }
+
+    /**
+     * @param mixed $data
+     */
+    public function decode($data)
+    {
+        return json_decode($data);
+    }
+
+    /**
      * @param int $code
      * @param string $text
      */
@@ -185,5 +201,6 @@ class Response
      */
     public function redirect($path)
     {
+        header("Location: $path");
     }
 }

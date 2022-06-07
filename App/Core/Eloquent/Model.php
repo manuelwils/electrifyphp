@@ -3,6 +3,8 @@
 namespace App\Core\Eloquent;
 
 use App\Core\Eloquent\Database as DB;
+use App\Core\Exceptions;
+use Exception;
 
 /**
  * @package Model
@@ -20,6 +22,11 @@ class Model
 	protected $fillable;
 
 	/**
+	 * Exceptions $exception 
+	 */
+	private $exception;
+
+	/**
 	 * @param string $table
 	 * @param array $fillable 
 	 */
@@ -27,6 +34,7 @@ class Model
 	{
 		$this->table = $table;
 		$this->fillable = $fillable;
+		$this->exception = new Exceptions;
 	}
 
 	/**
@@ -39,7 +47,11 @@ class Model
 		for ($i = 0; $i < count($this->fillable); $i++) {
 			$props = array_merge($props, array($this->fillable[$i] => $fields[$this->fillable[$i]]));
 		}
-		DB::query("INSERT INTO " . $this->table . " VALUES(null, " . implode(',', $this->fillable) . ", NOW())", $props);
+		try {
+			DB::query("INSERT INTO " . $this->table . " VALUES(null, " . implode(',', $this->fillable) . ", NOW())", $props);
+		} catch(Exception $e){
+			$this->exception->log($e->getMessage());
+		}
 	}
 
 	/**
@@ -50,12 +62,13 @@ class Model
 	 */
 	public function exist($selection, $data)
 	{
-		$query = DB::query(
-			"SELECT $selection FROM " . $this->table . " WHERE $selection=:$selection",
-			array(
-				":$selection" => $data,
-			)
-		);
+		try {
+			$query = DB::query("SELECT $selection FROM " . $this->table . " WHERE $selection=:$selection",
+				array(":$selection" => $data));
+		} catch(Exception $e){
+			$this->exception->log($e->getMessage());
+		}
+
 		if (count($query) > 0) {
 			return true;
 		}
@@ -64,15 +77,38 @@ class Model
 
 	/**
 	 * find one data in database table
-	 * @param string $selection
 	 * @param string $data
 	 * @return mixed
 	 */
 	public function find($data)
 	{
-		$query = DB::query(
-			"SELECT $data FROM " . $this->table
-		);
+		try {
+			$query = DB::query("SELECT $data FROM " . $this->table);
+		} catch(Exception $e){
+			$this->exception->log($e->getMessage());
+		}
+
+		if (count($query) > 0) {
+			return $query;
+		}
+		return false;
+	}
+
+	/**
+	 * find data in database tablen with condition
+	 * @param string $data
+	 * @param string $key
+	 * @param mixed $value
+	 * @return mixed
+	 */
+	public function findWhere($data, $key, $value)
+	{
+		try {
+			$query = DB::query("SELECT $data FROM" . $this->table . "WHERE $key=:$key", array(":$key" => $value))[0][$data];
+		} catch(Exception $e){
+			$this->exception->log($e->getMessage());
+		}
+
 		if (count($query) > 0) {
 			return $query;
 		}
@@ -85,7 +121,12 @@ class Model
 	 */ 
 	public function findAll()
 	{
-		$query = DB::query("SELECT * FROM " . $this->table);
+		try {
+			$query = DB::query("SELECT * FROM " . $this->table);
+		} catch(Exception $e){
+			$this->exception->log($e->getMessage());
+		}
+
 		if (count($query) > 0) {
 			return $query;
 		}

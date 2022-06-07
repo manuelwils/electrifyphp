@@ -1,5 +1,14 @@
 <?php
 
+use App\Core\Session;
+
+$session = new Session;
+
+/**
+ * Initialize application session
+ */
+$session->_init();
+
 /**
  * load dependency files
  */

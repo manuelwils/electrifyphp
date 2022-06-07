@@ -23,7 +23,7 @@ class View
 	 */
     public static function render($view, $params = [], $layout = "")
     {
-        $viewToRender = "";
+        $view_to_render = "";
         foreach($params as $key => $value){
             $$key = $value;
         }
@@ -33,7 +33,7 @@ class View
                 ob_start();
                 require_once dirname(__DIR__) . "/resource/views/layout/$layout.php";
                 $layoutContent = ob_get_clean();
-                $viewToRender = str_replace("{{content}}", $viewContent, $layoutContent);
+                $view_to_render = str_replace("{{content}}", $viewContent, $layoutContent);
             } catch(Exception $e) {
                 $exception = new Exceptions;
                 $exception->log($e->getMessage());
@@ -41,9 +41,9 @@ class View
         } else {
             ob_start();
             require_once getcwd() . "/resource/views/$view.php";
-            $viewToRender = ob_get_clean();
+            $view_to_render = ob_get_clean();
         }
-        echo $viewToRender;
+        echo $view_to_render;
         return;
     }
 

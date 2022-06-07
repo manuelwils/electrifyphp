@@ -7,6 +7,8 @@ use Exception;
 use App\Core\Hash;
 
 use App\Core\Eloquent\Database as DB;
+use App\Core\Response;
+use App\Core\Session;
 
 /**
  * @package Authentication
@@ -29,6 +31,16 @@ class Authentication
 	protected $exception;
 
 	/**
+	 * Session $session
+	 */
+	protected $session;
+
+	/**
+	 * Response $response
+	 */
+	protected $response;
+
+	/**
 	 * @param string $table
 	 * @param array $requirements 
 	 */
@@ -37,6 +49,8 @@ class Authentication
 		$this->exception = new Exceptions;
 		$this->table = $table;
 		$this->requirements = $requirements;
+		$this->session = new Session;
+		$this->response = new Response;
 	}
 
 	/**
@@ -83,20 +97,44 @@ class Authentication
 
 	/**
 	 * is user logged in?
+	 * must be called statically
 	 * @return bool|int
 	 */
-	public function is_auth()
+	public static function auth()
 	{
-		return (get_session('user_id') ? true : false);
+		$self = new static;
+		return ($self->session->has('user_id') ? true : false);
 	}
 
 	/**
 	 * is user a guest?
+	 * must be called statically
+	 * @return bool|int
+	 */
+	public static function guest()
+	{
+		$self = new static;
+		return (!$self->session->has('user_id') ? true : false);
+	}
+
+	/**
+	 * is user logged in?
+	 * must not be called statically
+	 * @return bool|int
+	 */
+	public function is_auth()
+	{
+		return ($this->session->has('user_id') ? true : false);
+	}
+
+	/**
+	 * is user a guest?
+	 * must not be called statically
 	 * @return bool|int
 	 */
 	public function is_guest()
 	{
-		return (!get_session('user_id') ? true : false);
+		return (!$this->session->has('user_id') ? true : false);
 	}
 
 	/**
@@ -105,7 +143,18 @@ class Authentication
 	 */
 	public function user($data)
 	{
-		return (DB::query("SELECT $data FROM member WHERE email=:email", array(':email' => get_session('user_id')))[0][$data]);
+		return (DB::query("SELECT $data FROM member WHERE email=:email", array(':email' => $this->session->read('user_id')))[0][$data]);
+	}
+
+	/**
+	 * set login session
+	 * @param string $name
+	 * @param string $value
+	 */
+	public static function set_session($name, $value)
+	{
+		$session = new Session;
+		$session->write($name, $value);
 	}
 
 	/**
@@ -113,12 +162,8 @@ class Authentication
 	 */
 	public static function destroy()
 	{
-
-		if (get_session('user_id')) {
-
-			unset($_SESSION['user_id']);
-
-			redirect('./login');
-		}
+		$self = new static;
+		$self->session->destroy('user_id');
+		$self->response->redirect('/login');
 	}
 }
