@@ -1,16 +1,16 @@
 <?php
 
-namespace App\Http\Controllers;
+namespace Mockr\Http\Controllers;
 
 use Exception;
-use App\Core\Hash;
-use App\Core\View;
-use App\Core\Request;
-use App\Core\Response;
-use App\Core\Exceptions;
-use App\Models\Register;
-use App\Core\Eloquent\Authentication as Auth;
-use App\Core\Session;
+use Electrify\Core\Hash;
+use Electrify\Core\View;
+use Electrify\Core\Request;
+use Electrify\Core\Response;
+use Electrify\Core\Exceptions;
+use Mockr\Models\Register;
+use Electrify\Core\Eloquent\Authentication as Auth;
+use Electrify\Core\Session;
 
 class RegisterController
 {

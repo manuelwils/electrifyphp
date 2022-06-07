@@ -3,9 +3,9 @@
 /**
  * get authentication
  */
-function auth(): App\Core\Eloquent\Authentication
+function auth(): Electrify\Core\Eloquent\Authentication
 {
-	return new App\Core\Eloquent\Authentication;
+	return new Electrify\Core\Eloquent\Authentication;
 }
 
 /**

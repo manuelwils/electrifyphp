@@ -1,12 +1,12 @@
 <?php
 
-namespace App\Http\Controllers;
+namespace Mockr\Http\Controllers;
 
-use App\Core\View;
-use App\Core\Request;
-use App\Models\Login;
-use App\Core\Response;
-use App\Core\Eloquent\Authentication as Auth;
+use Electrify\Core\View;
+use Electrify\Core\Request;
+use Mockr\Models\Login;
+use Electrify\Core\Response;
+use Electrify\Core\Eloquent\Authentication as Auth;
 
 class LoginController
 {

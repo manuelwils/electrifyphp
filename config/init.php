@@ -1,8 +1,6 @@
 <?php
 
-use App\Core\Session;
-
-$session = new Session;
+$session = new Electrify\Core\Session;
 
 /**
  * Initialize application session

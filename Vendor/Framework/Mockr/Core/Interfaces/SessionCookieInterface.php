@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Core\Interfaces;
+namespace Electrify\Core\Interfaces;
 
 /**
  * An interface for Session and Cookie classes

@@ -1,19 +1,19 @@
 <?php
 
-namespace App\Core;
+namespace Electrify\Core;
 
-use App\Core\Exceptions;
-use App\Core\Interfaces\SessionCookieInterface;
+use Electrify\Core\Exceptions;
+use Electrify\Core\Interfaces\SessionCookieInterface;
 
 /**
  * @package Session
  */
-class Session implements SessionCookieInterface
+class Cookie implements SessionCookieInterface
 {
     /**
      * Exceptions $exception
      */
-    private Exceptions $exception;
+    private $exception;
 
     public function __construct()
     {
@@ -21,13 +21,10 @@ class Session implements SessionCookieInterface
     }
 
     /**
-     *  initialize session
+     *  initialize cookie
      */
     public function _init()
     {
-        if (session_status() == PHP_SESSION_NONE) {
-			session_start();
-		}
     }
 
     /**
@@ -37,7 +34,6 @@ class Session implements SessionCookieInterface
      */
     public function write($key, $value)
     {
-        $_SESSION[$key] = $value;
     }
 
     /**
@@ -46,9 +42,6 @@ class Session implements SessionCookieInterface
      */
     public function read($key)
     {
-        if($this->has($key))
-            return $_SESSION[$key];
-        $this->exception->log("Session '$key' does not exist");
     }
 
     /**
@@ -57,7 +50,6 @@ class Session implements SessionCookieInterface
      */
     public function has($key)
     {
-        return array_key_exists($key, $_SESSION);
     }
 
     /**
@@ -65,7 +57,6 @@ class Session implements SessionCookieInterface
      */
     public function clear()
     {
-        session_unset();
     }
     
     /**
@@ -73,7 +64,6 @@ class Session implements SessionCookieInterface
      */
     public function dump()
     {
-        return $_SESSION;
     }
 
     /**
@@ -82,11 +72,5 @@ class Session implements SessionCookieInterface
      */
     public function destroy($key)
     {
-        if($this->has($key)) {
-            unset($_SESSION[$key]);
-        }
-        else {
-            $this->exception->log("Session '$key' does not exist");
-        }
     }
 }

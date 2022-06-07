@@ -1,8 +1,6 @@
 <?php
 
-namespace App\Core;
-
-use App\Core\Eloquent\Authentication;
+namespace Electrify\Core;
 
 /**
  * @package Controller

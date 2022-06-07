@@ -1,11 +1,11 @@
 <?php
 
-namespace App\Core;
+namespace Electrify\Core;
 
-use App\Core\View;
-use App\Core\Request;
-use App\Core\Response;
-use App\Core\Exceptions;
+use Electrify\Core\View;
+use Electrify\Core\Request;
+use Electrify\Core\Response;
+use Electrify\Core\Exceptions;
 
 /**
  * @package Router
@@ -74,7 +74,6 @@ class Router
 			$this->exception->log("the requested route '{$path}' does not exist");
 			$callback = "404 Not Found!";
 		}
-
 		if (is_callable($callback)) {
 			return call_user_func($callback, $this->request, $this->response);
 		}

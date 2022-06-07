@@ -1,8 +1,8 @@
 <?php
 
-namespace App\Models;
+namespace Mockr\Models;
 
-use App\Core\Eloquent\Model;
+use Electrify\Core\Eloquent\Model;
 
 class Register extends Model
 {

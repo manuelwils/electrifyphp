@@ -9,14 +9,10 @@
         }
     ],
     "autoload": {
-        "classmap": [
-            "App/Core",
-            "App/Models",
-            "App/Core/Eloquent",
-            "App/Core/Interfaces",
-            "App/Http/Middleware",
-            "App/Http/Controllers"
-        ]
+        "psr-4": {
+            "Electrify\\": "Vendor/Framework/Mockr/",
+            "Mockr\\": "App/"
+        }
     },
     "minimum-stability": "dev",
     "require": {}

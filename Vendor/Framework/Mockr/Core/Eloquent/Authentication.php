@@ -1,14 +1,14 @@
 <?php
 
-namespace App\Core\Eloquent;
+namespace Electrify\Core\Eloquent;
 
-use App\Core\Exceptions;
+use Electrify\Core\Exceptions;
 use Exception;
-use App\Core\Hash;
+use Electrify\Core\Hash;
 
-use App\Core\Eloquent\Database as DB;
-use App\Core\Response;
-use App\Core\Session;
+use Electrify\Core\Eloquent\Database as DB;
+use Electrify\Core\Response;
+use Electrify\Core\Session;
 
 /**
  * @package Authentication

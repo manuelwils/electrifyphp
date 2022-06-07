@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Core\Eloquent;
+namespace Electrify\Core\Eloquent;
 
 use PDO;
 

@@ -1,8 +1,8 @@
 <?php
 
-namespace App\Models;
+namespace Mockr\Models;
 
-use App\Core\Eloquent\Authentication as Auth;
+use Electrify\Core\Eloquent\Authentication as Auth;
 
 class Login extends Auth
 {

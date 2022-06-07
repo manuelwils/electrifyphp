@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Core\Http\Middleware;
+namespace Mockr\Http\Middleware;
 
 /**
  * class Middleware

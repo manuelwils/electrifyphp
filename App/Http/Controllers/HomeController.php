@@ -1,8 +1,8 @@
 <?php
 
-namespace App\Http\Controllers;
+namespace Mockr\Http\Controllers;
 
-use App\Core\View;
+use Electrify\Core\View;
 
 class HomeController
 {

@@ -1,9 +1,9 @@
 <?php
 
-namespace App\Core\Eloquent;
+namespace Electrify\Core\Eloquent;
 
-use App\Core\Eloquent\Database as DB;
-use App\Core\Exceptions;
+use Electrify\Core\Eloquent\Database as DB;
+use Electrify\Core\Exceptions;
 use Exception;
 
 /**
