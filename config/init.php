@@ -1,4 +1,10 @@
 <?php
+/**
+ * Ensure PHP version meets requirement for ElectrifyPHP
+ */
+if(floatval(PHP_VERSION) < 7.4) {
+    exit("ElectrifyPHP requires PHP version 7.4.x or higher, found v".floatval(PHP_VERSION).". Upgrade your PHP version to continue");
+}
 
 $session = new Electrify\Core\Session;
 
