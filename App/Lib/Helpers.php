@@ -30,7 +30,7 @@ function is_guest(): bool
  */
 function assets($asset): string
 {
-	return 'http://' . $_SERVER['SERVER_NAME'] . ':' . $_SERVER['SERVER_PORT'] . "/public/assets/{$asset}";
+	return 'http://' . $_SERVER['SERVER_NAME'] . ':' . $_SERVER['SERVER_PORT'] . "/assets/{$asset}";
 }
 
 /**

@@ -57,7 +57,7 @@ class Writer
 	 */
 	public function append($text)
 	{
-		$file = fopen($this->path, 'a');
+		$file = fopen(getcwd() . "/" . "../" . $this->path, 'a');
 		if ($file) {
 			fwrite($file, "\n[$this->time_stamp] $text");
 			fclose($file);

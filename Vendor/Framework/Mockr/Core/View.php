@@ -31,7 +31,7 @@ class View
             try {
                 $viewContent = self::renderWithoutLayout($view, $params = []);
                 ob_start();
-                require_once getcwd() . "/resource/views/layouts/$layout.php";
+                require_once getcwd() . "/../resource/views/layouts/$layout.php";
                 $layoutContent = ob_get_clean();
                 $view_to_render = str_replace("{{content}}", $viewContent, $layoutContent);
             } catch(Exception $e) {
@@ -40,7 +40,7 @@ class View
             }
         } else {
             ob_start();
-            require_once getcwd() . "/resource/views/$view.php";
+            require_once getcwd() . "/../resource/views/$view.php";
             $view_to_render = ob_get_clean();
         }
         echo $view_to_render;
@@ -54,7 +54,7 @@ class View
     public static function renderWithoutLayout($view, $params = [])
     {
         ob_start();
-        require_once getcwd() . "/resource/views/$view.php";
+        require_once getcwd() . "/../resource/views/$view.php";
         return ob_get_clean();
     }
 
