@@ -2,9 +2,9 @@
 
 use Electrify\Core\Router;
 use Electrify\Core\Eloquent\Authentication as Auth;
-use Mockr\Http\Controllers\HomeController;
-use Mockr\Http\Controllers\LoginController;
-use Mockr\Http\Controllers\RegisterController;
+use App\Http\Controllers\HomeController;
+use App\Http\Controllers\LoginController;
+use App\Http\Controllers\RegisterController;
 
 /**
  * Instantiate Router

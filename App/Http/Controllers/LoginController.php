@@ -1,10 +1,10 @@
 <?php
 
-namespace Mockr\Http\Controllers;
+namespace App\Http\Controllers;
 
 use Electrify\Core\View;
 use Electrify\Core\Request;
-use Mockr\Models\Login;
+use App\Models\Login;
 use Electrify\Core\Response;
 use Electrify\Core\Eloquent\Authentication as Auth;
 

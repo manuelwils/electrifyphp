@@ -1,6 +1,6 @@
 <?php
 
-namespace Mockr\Http\Middleware;
+namespace App\Http\Middleware;
 
 /**
  * @package Kernel

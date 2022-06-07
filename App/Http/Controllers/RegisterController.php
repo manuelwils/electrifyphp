@@ -1,6 +1,6 @@
 <?php
 
-namespace Mockr\Http\Controllers;
+namespace App\Http\Controllers;
 
 use Exception;
 use Electrify\Core\Hash;
@@ -8,7 +8,7 @@ use Electrify\Core\View;
 use Electrify\Core\Request;
 use Electrify\Core\Response;
 use Electrify\Core\Exceptions;
-use Mockr\Models\Register;
+use App\Models\Register;
 use Electrify\Core\Eloquent\Authentication as Auth;
 use Electrify\Core\Session;
 

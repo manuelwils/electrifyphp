@@ -1,5 +1,5 @@
 {
-    "name": "mockr/mockr",
+    "name": "electrify/electrify",
     "description": "Simple PHP Framework for smale-scale projects",
     "license": "MIT",
     "authors": [
@@ -11,7 +11,7 @@
     "autoload": {
         "psr-4": {
             "Electrify\\": "vendor/Framework/Mockr/",
-            "Mockr\\": "App/"
+            "App\\": "App/"
         }
     },
     "minimum-stability": "dev",

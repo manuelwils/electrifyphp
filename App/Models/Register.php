@@ -1,6 +1,6 @@
 <?php
 
-namespace Mockr\Models;
+namespace App\Models;
 
 use Electrify\Core\Eloquent\Model;
 

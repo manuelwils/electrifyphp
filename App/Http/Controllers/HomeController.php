@@ -1,6 +1,6 @@
 <?php
 
-namespace Mockr\Http\Controllers;
+namespace App\Http\Controllers;
 
 use Electrify\Core\View;
 
