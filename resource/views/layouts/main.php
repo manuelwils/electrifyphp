@@ -40,3 +40,9 @@
 					</div><!--/.nav-collapse -->
 				</div>
 			</nav>
+
+            {{content}}
+            
+        </div>
+    </body>
+</html>

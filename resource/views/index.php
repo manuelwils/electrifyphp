@@ -1,7 +1,3 @@
-<?php 
-	load_file('resource/views/components/header.php');
-?>
-
 <div class="jumbotron">
 	<div class="alert alert-success" role="alert">
 		<?php if(is_auth()) {
@@ -15,7 +11,3 @@
 		<h4 class="text-center"> <a href="./register">Register</a> || <a href="./login">Login</a></h4>
 	<?php } ?>
 </div>
-
-<?php 
-	load_file('resource/views/components/footer.php');
-?>

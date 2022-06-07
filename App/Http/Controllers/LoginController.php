@@ -16,7 +16,7 @@ class LoginController
 		// only guest can view register page
 		if (Auth::auth())
 			$response->redirect('./');
-		View::render("auth/login");
+		View::render("auth/login", "main");
 	}
 
 	public static function auth(Request $request)

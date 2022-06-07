@@ -21,7 +21,7 @@ class View
 	 * @param array $params
      * @param string $layout
 	 */
-    public static function render($view, $params = [], $layout = "")
+    public static function render($view, $layout = "", $params = [])
     {
         $view_to_render = "";
         foreach($params as $key => $value){
@@ -31,7 +31,7 @@ class View
             try {
                 $viewContent = self::renderWithoutLayout($view, $params = []);
                 ob_start();
-                require_once dirname(__DIR__) . "/resource/views/layout/$layout.php";
+                require_once getcwd() . "/resource/views/layouts/$layout.php";
                 $layoutContent = ob_get_clean();
                 $view_to_render = str_replace("{{content}}", $viewContent, $layoutContent);
             } catch(Exception $e) {

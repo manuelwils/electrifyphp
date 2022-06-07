@@ -20,7 +20,7 @@ class RegisterController
 		//only guest can view register page
 		if (Auth::auth())
 			$response->redirect('./');
-		View::render("auth/register");
+		View::render("auth/register", "main");
 	}
 
 	public static function store(Request $request)

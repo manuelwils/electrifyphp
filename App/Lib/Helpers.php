@@ -25,24 +25,12 @@ function is_guest(): bool
 }
 
 /**
- * load file
- * @param string $file
- */
-function load_file($file): void
-{
-	/**
-	 * query the file from the base directory
-	 */
-	require_once getcwd() . '/' . $file;
-}
-
-/**
  * query assets directory
  * @param string $asset
  */
 function assets($asset): string
 {
-	return "public/assets/{$asset}";
+	return 'http://' . $_SERVER['SERVER_NAME'] . ':' . $_SERVER['SERVER_PORT'] . "/public/assets/{$asset}";
 }
 
 /**

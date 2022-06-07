@@ -2,7 +2,6 @@
 
 namespace App\Http\Controllers;
 
-use App\Core\Eloquent\Authentication;
 use App\Core\View;
 
 class HomeController
@@ -10,6 +9,12 @@ class HomeController
 
 	public static function index()
 	{
-		View::render("index", ["title"=>"Homepage"]);
+		/*
+		| -------------------------------------------------------------|
+		| rendering index.php inside the main.php(optional) layout and |
+		| passing array of data(optional) to the index.php webpage     |
+		| -------------------------------------------------------------|
+		*/
+		View::render("index", "main", ["title"=>"Homepage"]);
 	}
 }
