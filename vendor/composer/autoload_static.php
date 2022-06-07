@@ -20,7 +20,7 @@ class ComposerStaticInitd2e33933ddaa46446690946fa96f5f6e
     public static $prefixDirsPsr4 = array (
         'Electrify\\' => 
         array (
-            0 => __DIR__ . '/..' . '/Framework/Mockr',
+            0 => __DIR__ . '/..' . '/Framework/Electrify',
         ),
         'App\\' => 
         array (
