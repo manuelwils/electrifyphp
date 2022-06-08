@@ -97,29 +97,6 @@ class Authentication
 
 	/**
 	 * is user logged in?
-	 * must be called statically
-	 * @return bool|int
-	 */
-	public static function auth()
-	{
-		$self = new static;
-		return ($self->session->has('user_id') ? true : false);
-	}
-
-	/**
-	 * is user a guest?
-	 * must be called statically
-	 * @return bool|int
-	 */
-	public static function guest()
-	{
-		$self = new static;
-		return (!$self->session->has('user_id') ? true : false);
-	}
-
-	/**
-	 * is user logged in?
-	 * must not be called statically
 	 * @return bool|int
 	 */
 	public function is_auth()
@@ -129,7 +106,6 @@ class Authentication
 
 	/**
 	 * is user a guest?
-	 * must not be called statically
 	 * @return bool|int
 	 */
 	public function is_guest()
@@ -160,7 +136,7 @@ class Authentication
 	/**
 	 * logout authenticated session
 	 */
-	public static function destroy()
+	public static function logout()
 	{
 		$self = new static;
 		$self->session->destroy('user_id');

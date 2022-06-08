@@ -28,7 +28,7 @@ $router->get('/login', [LoginController::class, "index"]);
 $router->post('/auth', [LoginController::class, "auth"]);
 
 // logout
-$router->post('/logout', [Auth::class, "destroy"]);
+$router->post('/logout', [Auth::class, "logout"]);
 
 /**
  * Start routing

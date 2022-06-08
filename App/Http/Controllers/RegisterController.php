@@ -4,12 +4,10 @@ namespace App\Http\Controllers;
 
 use Exception;
 use Electrify\Core\Hash;
-use Electrify\Core\View;
 use Electrify\Core\Request;
 use Electrify\Core\Response;
 use Electrify\Core\Exceptions;
 use App\Models\Register;
-use Electrify\Core\Eloquent\Authentication as Auth;
 use Electrify\Core\Session;
 
 class RegisterController
@@ -18,15 +16,15 @@ class RegisterController
 	public static function index($request, Response $response)
 	{
 		//only guest can view register page
-		if (Auth::auth())
+		if (is_auth())
 			$response->redirect('./');
-		View::render("auth/register", "main");
+		view("auth/register", "main");
 	}
 
 	public static function store(Request $request)
 	{
 		// only guest can view register page
-		if (Auth::auth())
+		if (is_auth())
 			return;
 
 		$register = new Register;

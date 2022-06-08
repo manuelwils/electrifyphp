@@ -2,8 +2,6 @@
 
 namespace App\Http\Controllers;
 
-use Electrify\Core\View;
-
 class HomeController
 {
 
@@ -15,6 +13,6 @@ class HomeController
 		| passing array of data(optional) to the index.php webpage     |
 		| -------------------------------------------------------------|
 		*/
-		View::render("index", "main", ["title"=>"Homepage"]);
+		view("index", "main", ["title"=>"Homepage"]);
 	}
 }

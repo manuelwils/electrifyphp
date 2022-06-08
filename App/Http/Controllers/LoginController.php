@@ -2,11 +2,9 @@
 
 namespace App\Http\Controllers;
 
-use Electrify\Core\View;
 use Electrify\Core\Request;
 use App\Models\Login;
 use Electrify\Core\Response;
-use Electrify\Core\Eloquent\Authentication as Auth;
 
 class LoginController
 {
@@ -14,15 +12,15 @@ class LoginController
 	public static function index($request, Response $response)
 	{
 		// only guest can view register page
-		if (Auth::auth())
+		if (is_auth())
 			$response->redirect('./');
-		View::render("auth/login", "main");
+		view("auth/login", "main");
 	}
 
 	public static function auth(Request $request)
 	{
 		// only guest can view register page
-		if (Auth::auth())
+		if (is_auth())
 			return;
 
 		$fields = $request->organize();
