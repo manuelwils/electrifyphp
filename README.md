@@ -16,3 +16,6 @@ Electrify is currently under development and is **ONLY** suitable for building *
 
 ### Requirements
 Electify requires `php >= 7.4`
+
+### Security Vulnerabilities
+If you discover a security vulnerability within ElectrifyPHP, please send an e-mail to Manuel Wils via manuelwils@surgewares.com. All security vulnerabilities will be promptly addressed.
