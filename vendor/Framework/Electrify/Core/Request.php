@@ -24,8 +24,8 @@ class Request
 
 	/**
 	 * query parameters
-	 */
-	protected array $queryParams = [];
+	*/
+	protected array $routeParams = [];
 
 	/**
 	 * Exceptions $exception
@@ -82,18 +82,32 @@ class Request
 	}
 
 	/**
-	 * Get query parameters
-	 */
-	public static function getQueryParams($path)
-	{
-		$regex = '/\{(\w+)\}/';
-		$queryParamName = [];
-		
-		if(preg_match_all($regex, $path, $matches)) {
-			array_push($queryParamName, $matches[1]);
-		}
-		return $queryParamName;
-	}
+     * @param $params
+     * @return self
+     */
+    public function setParams($params)
+    {
+        $this->routeParams = $params;
+        return $this;
+    }
+
+	/**
+     * get all params in the route
+     */
+    public function getParams()
+    {
+        return $this->routeParams;
+    }
+
+	/**
+	 * get specific parameter in the route
+     * @param string $param
+     * @param null $default
+     */
+    public function getParam($param, $default = null)
+    {
+        return $this->routeParams[$param] ?? $default;
+    }
 	
 	/**
 	 * validate request object

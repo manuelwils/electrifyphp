@@ -32,8 +32,8 @@ $router->post('/auth', [LoginController::class, "auth"]);
 $router->post('/logout', [Auth::class, "logout"]);
 
 // test
-$router->get('/show/12', function(){
-    echo json_encode(Request::getQueryParams('/show/{username}/{user_id}'));
+$router->get('/show/{id}/{user:[a-z]+}', function(Request $request) {
+    echo ($request->getParam('user'));
 });
 
 /**
