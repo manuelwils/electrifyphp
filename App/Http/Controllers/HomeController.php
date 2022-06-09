@@ -17,9 +17,4 @@ class HomeController
 		*/
 		view("index", "main", ["title"=>"Homepage"]);
 	}
-
-	public function show(Request $request)
-	{
-		var_dump($request);
-	}
 }
