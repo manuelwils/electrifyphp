@@ -23,6 +23,11 @@ class Request
 	protected array $errors = [];
 
 	/**
+	 * query parameters
+	 */
+	protected array $queryParams = [];
+
+	/**
 	 * Exceptions $exception
 	 */
 	protected Exceptions $exception;
@@ -71,16 +76,30 @@ class Request
 	/**
 	 * Get request method
 	 */
-	public function getMethod()
+	public function method()
 	{
 		return strtolower($_SERVER['REQUEST_METHOD']);
 	}
 
 	/**
+	 * Get query parameters
+	 */
+	public static function getQueryParams($path)
+	{
+		$regex = '/\{(\w+)\}/';
+		$queryParamName = [];
+		
+		if(preg_match_all($regex, $path, $matches)) {
+			array_push($queryParamName, $matches[1]);
+		}
+		return $queryParamName;
+	}
+	
+	/**
 	 * validate request object
 	 * @param array $fields
 	 */
-	public function validate($fields = [])
+	public function validate($fields = [], $sanitize = false)
 	{
 
 		/**
@@ -142,6 +161,9 @@ class Request
 		}
 
 		if (count($this->errors) === 0) {
+			if($sanitize === true) {
+				return $this->sanitize($this->data);
+			}
 			return $this->data;
 		}
 
@@ -152,7 +174,10 @@ class Request
 		exit(json_encode(array("message" => $this->errors)));
 	}
 
-	public function organize()
+	/**
+	 * organize a Request object
+	 */
+	public function organize($sanitize = false)
 	{
 		/**
 		 * remove first element of the request object 
@@ -164,6 +189,20 @@ class Request
 		/**
 		 * then return request object
 		 */
+		if($sanitize === true) {
+			return $this->sanitize($this->data);
+		}
 		return $this->data;
+	}
+
+	/**
+	 * sanitize Request data
+	 */
+	private function sanitize($data)
+	{
+		foreach($data as $key => $value) {
+			$value = htmlspecialchars($value);
+		}
+		return $data;
 	}
 }

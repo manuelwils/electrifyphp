@@ -5,6 +5,7 @@ use Electrify\Core\Eloquent\Authentication as Auth;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\LoginController;
 use App\Http\Controllers\RegisterController;
+use Electrify\Core\Request;
 
 /**
  * Instantiate Router
@@ -29,6 +30,11 @@ $router->post('/auth', [LoginController::class, "auth"]);
 
 // logout
 $router->post('/logout', [Auth::class, "logout"]);
+
+// test
+$router->get('/show/12', function(){
+    echo json_encode(Request::getQueryParams('/show/{username}/{user_id}'));
+});
 
 /**
  * Start routing

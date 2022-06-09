@@ -183,10 +183,10 @@ class Response
 
     /**
      * @param int $code
-     * @param string $text
      */
-    public function setStatusCode($code, $text)
+    public function setStatusCode($code)
     {
+        http_response_code($code);
     }
 
     /**

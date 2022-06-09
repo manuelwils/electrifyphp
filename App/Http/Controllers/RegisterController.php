@@ -13,7 +13,7 @@ use Electrify\Core\Session;
 class RegisterController
 {
 
-	public static function index($request, Response $response)
+	public function index($request, Response $response)
 	{
 		//only guest can view register page
 		if (is_auth())
@@ -21,7 +21,7 @@ class RegisterController
 		view("auth/register", "main");
 	}
 
-	public static function store(Request $request)
+	public function store(Request $request)
 	{
 		// only guest can view register page
 		if (is_auth())
@@ -31,6 +31,12 @@ class RegisterController
 		$exception = new Exceptions;
 		$session = new Session;
 
+		/*
+		|-------------------------------------------------------------------|
+		| you can optionally pass boolean "true" as second argument         |
+		| to the $request->validate method to sanitize the request data     |
+		|-------------------------------------------------------------------|
+		 */
 		$fields = $request->validate([
 			'first_name' => 'required',
 			'last_name' => 'required',

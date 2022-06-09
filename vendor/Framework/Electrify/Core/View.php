@@ -24,9 +24,13 @@ class View
     public static function render($view, $layout = "", $params = [])
     {
         $view_to_render = "";
-        foreach($params as $key => $value){
-            $$key = $value;
+
+        if(isset($params) && is_array($params)) {
+            foreach($params as $key => $value){
+                $$key = $value;
+            }
         }
+
         if(isset($layout) && !empty($layout)) {
             try {
                 $viewContent = self::renderWithoutLayout($view, $params = []);

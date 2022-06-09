@@ -45,7 +45,7 @@ function rand_session_integers(): void
 /**
  * @package View extension
  */
-function view($view, $layout, $params = []) 
+function view($view, $layout = "", $params = []) 
 {
 	return \Electrify\Core\View::render($view, $layout, $params);
 }

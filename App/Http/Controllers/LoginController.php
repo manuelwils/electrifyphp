@@ -9,7 +9,7 @@ use Electrify\Core\Response;
 class LoginController
 {
 
-	public static function index($request, Response $response)
+	public function index($request, Response $response)
 	{
 		// only guest can view register page
 		if (is_auth())
@@ -17,13 +17,19 @@ class LoginController
 		view("auth/login", "main");
 	}
 
-	public static function auth(Request $request)
+	public function auth(Request $request)
 	{
 		// only guest can view register page
 		if (is_auth())
 			return;
 
-		$fields = $request->organize();
+		/*
+		|-------------------------------------------------------------------|
+		| you can optionally pass boolean "true" as second argument         |
+		| to the $request->organize method to sanitize the request data     |
+		|-------------------------------------------------------------------|
+		 */
+		$fields = $request->organize(true);
 		
 		if (Login::attempt($fields)) {
 			Login::set_session('user_id', $fields[':email']);
