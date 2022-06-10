@@ -9,6 +9,9 @@ use Electrify\Core\Process;
 
 $process = new Process('public');
 
+/**
+ * start a dev server
+ */
 function serve($port = 8080)
 {
     global $process;
