@@ -22,7 +22,6 @@ require_once getcwd() . '/../App/Lib/Helpers.php';
 /**
  * set constance for directories
  */
-DEFINE('SERVER_ROOT', $env->server_root);
 DEFINE('ROOT', getcwd());
 
 /**

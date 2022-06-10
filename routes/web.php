@@ -11,13 +11,15 @@ use Electrify\Core\Request;
 /**
  * Instantiate Router from Application
  */
-$router = Application::instantiate('Electrify\Core\Router');  
+$router = new Router;
 
 /*
-|-----------------------------------------------------------|
-| You can also instantiate Router from Application using    |
-| $router = Application::instance()->router;                |
-|-----------------------------------------------------------|
+|---------------------------------------------------------------|
+| You can also instantiate Router from Application using        |
+| $router = Application::instance()->router;                    |
+|                          OR                                   |
+| $router = Application::instantiate('Electrify\Core\Router');  |
+|---------------------------------------------------------------|
  */
 
 // homepage
