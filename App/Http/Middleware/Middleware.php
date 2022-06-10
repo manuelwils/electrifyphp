@@ -3,7 +3,7 @@
 namespace App\Http\Middleware;
 
 /**
- * class Middleware
+ * @package Middleware
  */
  class Middleware
  {

@@ -6,7 +6,7 @@ use Electrify\Core\Exceptions;
 use Exception;
 use Electrify\Core\Hash;
 
-use Electrify\Core\Eloquent\Database as DB;
+use Electrify\Core\Eloquent\Database\Database as DB;
 use Electrify\Core\Response;
 use Electrify\Core\Session;
 

@@ -1,8 +1,8 @@
 <?php
 
-namespace Electrify\Core\Eloquent;
+namespace Electrify\Core\Eloquent\Database;
 
-use PDO;
+use \PDO;
 
 /**
  * @package Database

@@ -5,12 +5,20 @@ use Electrify\Core\Eloquent\Authentication as Auth;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\LoginController;
 use App\Http\Controllers\RegisterController;
+use Electrify\Core\Application;
 use Electrify\Core\Request;
 
 /**
- * Instantiate Router
+ * Instantiate Router from Application
  */
-$router = new Router;
+$router = Application::instantiate('Electrify\Core\Router');  
+
+/*
+|-----------------------------------------------------------|
+| You can also instantiate Router from Application using    |
+| $router = Application::instance()->router;                |
+|-----------------------------------------------------------|
+ */
 
 // homepage
 $router->get('/', [HomeController::class, "index"]);

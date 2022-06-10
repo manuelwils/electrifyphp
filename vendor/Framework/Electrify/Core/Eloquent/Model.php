@@ -2,7 +2,7 @@
 
 namespace Electrify\Core\Eloquent;
 
-use Electrify\Core\Eloquent\Database as DB;
+use Electrify\Core\Eloquent\Database\Database as DB;
 use Electrify\Core\Exceptions;
 use Exception;
 
