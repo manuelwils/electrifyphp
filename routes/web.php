@@ -12,7 +12,6 @@ use Electrify\Core\Request;
  */
 $router = new Router;
 
-
 // homepage
 $router->get('/', [HomeController::class, "index"]);
 
@@ -37,6 +36,6 @@ $router->get('/show/{id}/{user:[a-z]+}', function(Request $request) {
 });
 
 /**
- * Start routing
+ * Start process and routing
  */
 $router->run();

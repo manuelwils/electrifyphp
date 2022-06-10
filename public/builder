@@ -1,0 +1,28 @@
+#!/usr/bin/php
+<?php
+/**
+ * Load packages
+ */
+require dirname(__DIR__) . '/vendor/autoload.php';
+
+use Electrify\Core\Process;
+
+$process = new Process(__DIR__);
+
+function serve($port = 8080) {
+    global $process;
+    $process->listen($port);
+}
+
+function terminate($port = 8080) {
+    global $process;
+    $process->terminate();
+}
+
+/**
+ * function, arg generator enabler
+ */
+foreach ($argv as $arg){
+    $parameters = array_slice($argv, 2);
+    function_exists($arg) && call_user_func($arg, ...$parameters);
+}
