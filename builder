@@ -3,17 +3,18 @@
 /**
  * Load packages
  */
-require dirname(__DIR__) . '/vendor/autoload.php';
+require __DIR__ . '/vendor/autoload.php';
 
 use Electrify\Core\Process;
 
-$process = new Process(__DIR__);
+$process = new Process('public');
 
 function serve($port = 8080)
 {
     global $process;
     $process->listen($port);
 }
+
 /**
  * function, arg generator enabler
  */

@@ -2,6 +2,7 @@
 
 namespace Electrify\Core;
 
+use Electrify\Core\Exceptions;
 use Electrify\Core\Console\ConsoleKernel;
 
 /**
@@ -13,16 +14,22 @@ class Process extends ConsoleKernel
     /**
      * set default port to 8080
      */
-    protected int $port = 8080;
+    private int $port = 8080;
 
     /**
      * set process directory to listen to
      */
-    protected string $path;
+    private string $path = 'public';
 
-    public function __construct($path)
+    /**
+     * Handle exceptions
+     */
+    private Exceptions $exception;
+
+    public function __construct($path = '')
     {
-        $this->path = $path;
+        if(isset($path) & !empty($path))
+            $this->path = $path;
     }
 
     /**
@@ -33,9 +40,13 @@ class Process extends ConsoleKernel
     {
         if (isset($port))
             $this->port = $port;
-        if ($this->windows()) {
+
+        if ($this->is_windows() && $this->is_valid_path($this->path)) 
+        {
             return pclose(popen("start php -S localhost:" . strval($this->port), "r"));
-        } else {
+        } 
+        else if (!$this->is_windows() && $this->is_valid_path($this->path))
+        {
             return exec("php -S localhost:" . strval($this->port), " > /dev/null &");
         }
     }
@@ -43,8 +54,23 @@ class Process extends ConsoleKernel
     /**
      * is windows
      */
-    private function windows()
+    private function is_windows()
     {
         return substr(strtolower(php_uname()), 0, 7) == "windows";
     }
+
+    /**
+     * path exist
+     */
+    private function is_valid_path($path)
+    {
+        if(file_exists(getcwd() . '/' . $path)) {
+            chdir($path); 
+            return true;
+        } else {
+            $this->exception->log("the requested path '$path' for the console program does not exist ");
+        }
+        return false;
+    }
+    
 }
