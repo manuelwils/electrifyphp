@@ -14,7 +14,6 @@ function serve($port = 8080)
     global $process;
     $process->listen($port);
 }
-
 /**
  * function, arg generator enabler
  */
