@@ -9,7 +9,8 @@ use Electrify\Core\Process;
 
 $process = new Process(__DIR__);
 
-function serve($port = 8080) {
+function serve($port = 8080)
+{
     global $process;
     $process->listen($port);
 }
@@ -17,7 +18,7 @@ function serve($port = 8080) {
 /**
  * function, arg generator enabler
  */
-foreach ($argv as $arg){
+foreach ($argv as $arg) {
     $parameters = array_slice($argv, 2);
     function_exists($arg) && call_user_func($arg, ...$parameters);
 }

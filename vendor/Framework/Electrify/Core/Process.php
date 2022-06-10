@@ -29,10 +29,11 @@ class Process extends ConsoleKernel
      * listen and serve localhost on $port
      * @param int $port
      */
-    public function listen($port = null) {
-        if(isset($port))
+    public function listen($port = null)
+    {
+        if (isset($port))
             $this->port = $port;
-        if($this->windows()) {
+        if ($this->windows()) {
             return pclose(popen("start php -S localhost:" . strval($this->port), "r"));
         } else {
             return exec("php -S localhost:" . strval($this->port), " > /dev/null &");
@@ -42,7 +43,8 @@ class Process extends ConsoleKernel
     /**
      * is windows
      */
-    private function windows() {
+    private function windows()
+    {
         return substr(strtolower(php_uname()), 0, 7) == "windows";
     }
 }
