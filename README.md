@@ -10,9 +10,8 @@ Electrify is currently under development and is **ONLY** suitable for building *
 
 ### Getting started
 1. Download or clone the repo to your computer
-2. run `composer update`
-3. start a server on any port, run <br>`php builder serve` the default port is `8080`, to start the server on a different port, run `php builder serve your_port_number`
-4. while awaiting to be completed for the start, you can use Electrify same way you use laravel
+2. start a server on any port, run <br>`php builder serve` the default port is `8080`, to start the server on a different port, run `php builder serve your_port_number`
+3. while awaiting to be completed for the start, you can use Electrify same way you use laravel
 
 ### Requirements
 Electrify requires `php >= 7.4`
