@@ -6,6 +6,6 @@ $vendorDir = dirname(dirname(__FILE__));
 $baseDir = dirname($vendorDir);
 
 return array(
-    'Electrify\\' => array($vendorDir . '/Framework/Electrify'),
+    'Electrify\\' => array($baseDir . '/Framework/Electrify'),
     'App\\' => array($baseDir . '/App'),
 );

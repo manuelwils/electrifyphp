@@ -10,7 +10,7 @@
     ],
     "autoload": {
         "psr-4": {
-            "Electrify\\": "vendor/Framework/Electrify/",
+            "Electrify\\": "Framework/Electrify/",
             "App\\": "App/"
         }
     },
